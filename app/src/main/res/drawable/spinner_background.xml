@@ -1,0 +1,21 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@android:color/white" />
+            <stroke
+                android:width="2dp"
+                android:color="#44A1EE" />
+            <corners android:radius="8dp" />
+            <padding
+                android:left="8dp"
+                android:top="8dp"
+                android:right="8dp"
+                android:bottom="8dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/black_arrow"
+        android:gravity="end|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="8dp" /> <!-- 오른쪽 끝으로 조정 -->
+</layer-list>
