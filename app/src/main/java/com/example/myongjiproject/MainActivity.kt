@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
         // 초기 프래그먼트 설정
         supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, HomeFragment()).commit()
 
-        // BottomNavigationView 리스너 설정
+        // 바텀 네비게이션 부분
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             val selectedFragment = when (item.itemId) {
                 R.id.navigation_home -> HomeFragment()
                 R.id.navigation_completed -> CompletedFragment()
                 R.id.navigation_menu -> MenuFragment()
                 R.id.navigation_notification -> NotificationsFragment()
+                R.id.navigation_profile -> ProfileFragment()
                 else -> HomeFragment()
             }
             supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, selectedFragment).commit()

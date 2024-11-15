@@ -16,4 +16,8 @@
         android:id="@+id/navigation_notification"
         android:icon="@drawable/notification"
         android:title="Notifications" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile"
+        android:title="Profile"/>
 </menu>

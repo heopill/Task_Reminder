@@ -77,17 +77,23 @@ class SignUpActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             // Firebase Realtime Database에 사용자 정보 저장
-                            val userId = name // name을 ID로 사용
-                            val user = User(email, password, name, grade)
+                            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+                            if (userId.isNotEmpty()) {
+                                // Firebase Realtime Database에 사용자 정보 저장
+                                val user = User(email, password, name, grade)
 
-                            database.child("users").child(userId).setValue(user).addOnCompleteListener { dbTask ->
-                                if (dbTask.isSuccessful) {
-                                    Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(this, LoginActivity::class.java))
-                                    finish()
-                                } else {
-                                    Toast.makeText(this, "회원가입 실패: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                // 사용자 UID를 사용하여 데이터베이스에 저장
+                                database.child("users").child(userId).setValue(user).addOnCompleteListener { dbTask ->
+                                    if (dbTask.isSuccessful) {
+                                        Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this, LoginActivity::class.java))
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "회원가입 실패: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
+                            } else {
+                                Toast.makeText(this, "UID를 가져오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                             }
                         } else {
                             Toast.makeText(this, "회원가입 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
@@ -96,10 +102,11 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "모든 필드를 올바르게 입력하세요.", Toast.LENGTH_SHORT).show()
             }
+        }
 
         }
     }
-}
+
 
 data class User(
     val id: String = "",

@@ -1,33 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tv_task_title"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="과제 제목"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/tv_due_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="과제 마감일" />
+        <TextView
+            android:id="@+id/tv_task_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="과제 제목"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_course_name"
+        <TextView
+            android:id="@+id/tv_due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="과제 마감일" />
+
+        <TextView
+            android:id="@+id/tv_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의명" />
+
+        <TextView
+            android:id="@+id/tv_left_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="마감까지 남은 기간 : " />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="강의명" />
+        android:src="@drawable/trash"
+        android:background="?attr/selectableItemBackground"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"/>
 
     <CheckBox
         android:id="@+id/cb_completed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="완료" />
-</LinearLayout>
+        android:layout_gravity="center"
+        />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
