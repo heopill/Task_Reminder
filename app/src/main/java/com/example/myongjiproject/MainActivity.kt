@@ -1,11 +1,15 @@
 package com.example.myongjiproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myongjiproject.databinding.ActivityMainBinding
+import com.google.android.play.integrity.internal.c
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -31,6 +35,15 @@ class MainActivity : AppCompatActivity() {
             }
             supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, selectedFragment).commit()
             true
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish() // MainActivity 종료
         }
     }
 }

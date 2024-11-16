@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
     private fun fetchTasksFromFirebase() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         if (uid == null) {
-            Toast.makeText(context, "로그인 되어 있지 않습니다.", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "로그인 되어 있지 않습니다.", Toast.LENGTH_SHORT).show()
             return
         }
 
