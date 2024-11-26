@@ -57,5 +57,11 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:22.0.0") // Firebase Auth 라이브러리
     implementation ("com.google.firebase:firebase-database:20.0.0") // Realtime Database 라이브러리
+    implementation ("com.google.firebase:firebase-storage:20.2.1") // Firebase Storage 라이브러리
+    implementation ("org.jsoup:jsoup:1.15.4") // 웹 스크롤 Jsoup 사용
+    implementation ("androidx.viewpager2:viewpager2:1.0.0") // ViewPager
+    implementation ("androidx.cardview:cardview:1.0.0") // CardView
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
 }
