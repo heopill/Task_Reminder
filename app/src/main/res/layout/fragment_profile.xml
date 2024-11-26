@@ -4,14 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ProfileFragment">
 
-    <Button
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_margin="16dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:text="마이페이지"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/iv_profile_image"
+        android:src="@drawable/profile_default"
+        android:layout_marginLeft="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+
+    </ImageView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_UserName"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="사용자 이름 : "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_userEmail"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="이메일 주소 : "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_userGrade"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="학년 : "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnProfileImage"
+        android:text="프로필 이미지 변경하기"
+        android:textStyle="bold"
+        android:background="@color/skyblue"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_logout"
-        android:text="로그아웃"
-        />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <android.widget.Button
+            android:background="@color/skyblue"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_logout"
+            android:textStyle="bold"
+            android:text="로그아웃"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            />
+
+        <android.widget.Button
+            android:background="@color/skyblue"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_withdraw"
+            android:textStyle="bold"
+            android:text="회원탈퇴"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

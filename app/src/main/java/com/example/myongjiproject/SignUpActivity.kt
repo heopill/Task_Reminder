@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -14,11 +13,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
+
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,36 +66,19 @@ class SignUpActivity : AppCompatActivity() {
 
         // 회원가입 버튼 클릭 이벤트
         binding.btnSignupComplete.setOnClickListener {
-            val email = binding.etSignupId.text.toString() // 이메일 입력받음
+            val email = binding.etSignupId.text.toString()
             val password = binding.etSignupPassword.text.toString()
             val passwordConfirm = binding.etSignupPasswordConfirm.text.toString()
             val name = binding.etName.text.toString()
             val grade = binding.spinnerGrade.selectedItem.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty() && password == passwordConfirm && name.isNotEmpty()) {
-                // Firebase Authentication을 통해 사용자 등록
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // Firebase Realtime Database에 사용자 정보 저장
-                            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-                            if (userId.isNotEmpty()) {
-                                // Firebase Realtime Database에 사용자 정보 저장
-                                val user = User(email, password, name, grade)
-
-                                // 사용자 UID를 사용하여 데이터베이스에 저장
-                                database.child("users").child(userId).setValue(user).addOnCompleteListener { dbTask ->
-                                    if (dbTask.isSuccessful) {
-                                        Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
-                                        startActivity(Intent(this, LoginActivity::class.java))
-                                        finish()
-                                    } else {
-                                        Toast.makeText(this, "회원가입 실패: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            } else {
-                                Toast.makeText(this, "UID를 가져오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                            }
+                            val userId = auth.currentUser?.uid ?: ""
+                            val user = User(email, password, name, grade, "")
+                            saveUserToDatabase(userId, user)
                         } else {
                             Toast.makeText(this, "회원가입 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
@@ -103,15 +87,32 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "모든 필드를 올바르게 입력하세요.", Toast.LENGTH_SHORT).show()
             }
         }
-
-        }
     }
 
+    // 사용자 정보를 데이터베이스에 저장하는 함수
+    private fun saveUserToDatabase(userId: String, user: User) {
+        database.child("users").child(userId).setValue(user)
+            .addOnCompleteListener { dbTask ->
+                if (dbTask.isSuccessful) {
+                    val userId = FirebaseAuth.getInstance().currentUser?.uid
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(
+                        this,
+                        "회원가입 실패: ${dbTask.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
+
+}
 
 data class User(
     val id: String = "",
     val password: String = "",
     val name: String = "",
-    val grade: String = ""
+    val grade: String = "",
+    val profileImageUrl: String = ""
 )
-
