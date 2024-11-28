@@ -14,7 +14,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/tesker" />
+        app:srcCompat="@drawable/taskicon" />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView2"-->
@@ -24,6 +24,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
@@ -31,5 +32,17 @@
         android:textColor="@color/black"
         android:text="Task Reminder"
         android:textStyle="bold"/>
+
+    <TextView
+        android:text="with MJC"
+        android:textStyle="bold"
+        android:gravity="end"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
 
 </LinearLayout>
