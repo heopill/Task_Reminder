@@ -96,6 +96,9 @@ class CompletedFragment : Fragment() {
                             }
                         }
                         completedTaskAdapter.submitList(completedTasks)  // CompletedFragment에서 과제 리스트 갱신
+
+                        val completedCount = completedTasks.size
+                        binding.tvCompletedTask.text = "지금까지 $completedCount"+"개의 과제를 완료했어요!"
                     }
 
                     override fun onCancelled(error: DatabaseError) {

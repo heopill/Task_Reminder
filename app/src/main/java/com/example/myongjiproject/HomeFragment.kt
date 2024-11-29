@@ -94,13 +94,13 @@ class HomeFragment : Fragment() {
 
                     // tvLeftTask 업데이트
                     binding.tvLeftTask.text = if (remainingTaskCount > 0) {
-                        "$userName 님의 남은 과제는 $remainingTaskCount 개 입니다"
+                        "$userName"+"님의 남은 과제는 $remainingTaskCount"+"개 입니다"
                     } else {
-                        "$userName 님의 남은 과제가 없습니다"
+                        "$userName"+"님의 남은 과제가 없습니다"
                     }
                 } else {
                     // 과제가 없을 경우에도 문구 업데이트
-                    binding.tvLeftTask.text = "$userName 님의 남은 과제가 없습니다"
+                    binding.tvLeftTask.text = "$userName"+"님의 남은 과제가 없습니다"
                 }
             }.addOnFailureListener { exception ->
                 Toast.makeText(context, "데이터 로드 실패: ${exception.message}", Toast.LENGTH_SHORT).show()

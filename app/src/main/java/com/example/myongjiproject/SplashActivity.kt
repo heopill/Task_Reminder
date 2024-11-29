@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 3000) // 3초간 스플래시 화면 대기
+        }, 2000) // 3초간 스플래시 화면 대기
 
     }
 }
