@@ -200,7 +200,7 @@ class ProfileFragment : Fragment() {
 
             // 범례 표시 부분
             val legendView = TextView(context).apply {
-                text = "$courseName: $taskCount"+"개 (${percentage}%)"
+                text = "$courseName : $taskCount"+"개 (${percentage}%)"
 
                 // 폰트 변경
                 val typeface = ResourcesCompat.getFont(requireContext(), R.font.clovastar)
@@ -213,7 +213,7 @@ class ProfileFragment : Fragment() {
             accumulatedProgress += percentage
         }
 
-        binding.tvProgressLegend.text = "총 완료 과제: $totalCompletedTasks" +"개"
+        binding.tvProgressLegend.text = "총 완료 과제 : $totalCompletedTasks" +"개"
     }
 
 } // class ProfileFragment 종료 괄호

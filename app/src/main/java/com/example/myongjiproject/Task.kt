@@ -5,5 +5,7 @@ data class Task(
     val title: String = "",
     val dueDate: String = "",
     val courseName: String = "",
-    val completed: Boolean = false
+    val completed: Boolean = false,
+    var notified3Days: Boolean = false,
+    var notified1Day: Boolean = false
 )

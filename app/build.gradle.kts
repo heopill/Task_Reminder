@@ -61,6 +61,7 @@ dependencies {
     implementation ("org.jsoup:jsoup:1.15.4") // 웹 스크롤 Jsoup 사용
     implementation ("androidx.viewpager2:viewpager2:1.0.0") // ViewPager
     implementation ("androidx.cardview:cardview:1.0.0") // CardView
+    implementation ("androidx.work:work-runtime-ktx:2.8.1") // 백그라운드에서도 알림을 위한 workManager
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")

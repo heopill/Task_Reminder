@@ -60,11 +60,11 @@ class TaskAdapter(
                             daysLeft >= 7 -> {
                                 binding.tvLeftTime.setTextColor(binding.root.context.getColor(R.color.black)) // 7일 이상
                             }
-                            daysLeft in 1 until 7 -> {
-                                binding.tvLeftTime.setTextColor(binding.root.context.getColor(R.color.yellow)) // 1일 이상 7일 미만
+                            daysLeft in 3 until 7 -> {
+                                binding.tvLeftTime.setTextColor(binding.root.context.getColor(R.color.yellow)) // 3일 이상 7일 미만
                             }
-                            daysLeft < 1 -> {
-                                binding.tvLeftTime.setTextColor(binding.root.context.getColor(R.color.red)) // 1일 미만
+                            daysLeft < 3 -> {
+                                binding.tvLeftTime.setTextColor(binding.root.context.getColor(R.color.red)) // 3일 미만
                             }
                         }
                     }
