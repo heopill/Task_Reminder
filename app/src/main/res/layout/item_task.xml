@@ -50,13 +50,23 @@
     </LinearLayout>
 
     <ImageButton
+        android:id="@+id/ib_Modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/modify"
+        android:background="?attr/selectableItemBackground"
+        android:padding="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"/>
+
+    <ImageButton
         android:id="@+id/ib_Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/trash"
         android:background="?attr/selectableItemBackground"
         android:padding="5dp"
-        android:layout_marginRight="10dp"
+
         android:layout_gravity="center"/>
 
     <CheckBox

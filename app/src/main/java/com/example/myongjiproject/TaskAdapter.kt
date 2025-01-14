@@ -1,5 +1,6 @@
 package com.example.myongjiproject
 
+import android.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myongjiproject.databinding.DialogAddTaskBinding
 import com.example.myongjiproject.databinding.ItemTaskBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -16,7 +18,8 @@ import java.util.Locale
 class TaskAdapter(
     private val taskList: MutableList<Task>,
     private val onCompleteClick: (String, Boolean) -> Unit,
-    private val onDeleteClick: (String) -> Unit
+    private val onDeleteClick: (String) -> Unit,
+    private val onEditClick: (Task) -> Unit
 ) : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -73,6 +76,11 @@ class TaskAdapter(
                 e.printStackTrace()
             }
 
+            // 수정 버튼 클릭 시 다이얼로그 표시
+            binding.ibModify.setOnClickListener {
+                onEditClick(task)
+            }
+
             // ImageView 클릭 시 삭제 처리
             binding.ibDelete.setOnClickListener {
                 onDeleteClick(task.id)
@@ -84,6 +92,8 @@ class TaskAdapter(
                 onCompleteClick(task.id, isChecked) // onCompleteClick 함수에 isChecked 전달
             }
         }
+
+
 
         // 남은 기간을 계산하여 반환하는 함수
         private fun getRemainingTime(dueDate: String): String {
