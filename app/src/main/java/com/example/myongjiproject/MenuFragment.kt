@@ -34,6 +34,7 @@ class MenuFragment : Fragment() {
             _binding = null
         }
 
+        // 파이어베이스에서 메뉴 데이터 베이스 가져오기
         private fun fetchMenuDataFromFirebase() {
             menuRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
